@@ -77,6 +77,29 @@ namespace UI
 			level_two_button->setCentreAlinged();
 			menu_button->setCentreAlinged();
 		}
+		void LevelSelectionUIController::registerButtonCallback()
+		{
+			level_one_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::singleLinkedListButtonCallback, this));
+			level_two_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::doubleLinkedListButtonCallback, this));
+			menu_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::menuButtonCallback, this));
+		}
+		void LevelSelectionUIController::singleLinkedListButtonCallback()
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::GAMEPLAY);
+			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::ONE);
+		}
+		void LevelSelectionUIController::doubleLinkedListButtonCallback()
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::GAMEPLAY);
+			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::TWO);
+		}
+		void LevelSelectionUIController::menuButtonCallback()
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::MAIN_MENU);
+		}
 		void LevelSelectionUIController::destroy()
 		{
 			delete(level_one_button);
