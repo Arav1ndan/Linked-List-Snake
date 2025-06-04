@@ -14,6 +14,18 @@ namespace Player {
 	}
 	void SnakeController::update()
 	{
+		switch (current_snake_state)
+		{
+		case Player::SnakeState::ALIVE:
+			processPlayerInput();
+			updateSnakeDirection();
+			processSnakeCollision();
+			moveSnake();
+			break;	
+		case Player::SnakeState::DEAD:
+			handleRestart();
+			break;
+		}
 	}
 	void SnakeController::render()
 	{
