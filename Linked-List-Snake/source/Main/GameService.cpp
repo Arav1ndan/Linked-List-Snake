@@ -9,7 +9,7 @@ namespace Main
 	using namespace Graphics;
 	using namespace Event;
 	using namespace UI;
-
+	//changing boot to main menu.
 	GameState GameService::current_state = GameState::BOOT;
 
 	GameService::GameService() { service_locator = nullptr; }
