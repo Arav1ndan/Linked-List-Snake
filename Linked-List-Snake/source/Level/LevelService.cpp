@@ -1,9 +1,10 @@
 #include "../../include/Level/LevelService.h"
 #include "../../include/Level/LevelController.h"
+#include "Global/ServiceLocator.h"
 
 namespace Level
 {
-	//using namespace Global;
+	using namespace Global;
 
 	LevelService::LevelService()
 	{
@@ -45,5 +46,9 @@ namespace Level
 	void LevelService::destroy()
 	{
 		delete level_controller;
+	}
+	void LevelService::spawnPlayer()
+	{
+		ServiceLocator::getInstance()->getLevelService()->spawnPlayer();
 	}
 }
