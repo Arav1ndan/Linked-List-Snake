@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Player\BodyPart.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\Level\LevelController.cpp" />
     <ClCompile Include="source\Level\LevelData.cpp" />
@@ -169,7 +170,9 @@
     <ClInclude Include="include\Level\LevelNumber.h" />
     <ClInclude Include="include\Level\LevelService.h" />
     <ClInclude Include="include\Level\LevelView.h" />
+    <ClInclude Include="include\Player\BodyPart.h" />
     <ClInclude Include="include\Player\Direction.h" />
+    <ClInclude Include="include\Player\Node.h" />
     <ClInclude Include="include\Player\PlayerService.h" />
     <ClInclude Include="include\Player\SnakeController.h" />
     <ClInclude Include="include\Time\TimeService.h" />
