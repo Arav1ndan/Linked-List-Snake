@@ -16,6 +16,15 @@ namespace Player {
 		float bodypart_height;
 
 		float getRotationAngle();
+		void updatePosition();
+
+		sf::Vector2i getNextPosition();
+		sf::Vector2i getNextPositionLeft();
+		sf::Vector2i getNextPositionRight();
+		sf::Vector2i getNextPositionUp();
+		sf::Vector2i getNextPositionDown();
+		void setPosition(sf::Vector2i position);
+
 	public:
 		BodyPart();
 		~BodyPart();
@@ -28,9 +37,8 @@ namespace Player {
 		void createBodyPartImage();
 		void initializeBodyPartImage();
 		sf::Vector2f getBodyPartScreenPosition();
-		
-		
-
-
+		void setDirection(Direction direction);
+		Direction getDirection();
+		sf::Vector2i getPosition();
 	};
 }
