@@ -18,7 +18,7 @@ namespace Global
         UI::UIService* ui_service;
         Time::TimeService* time_service;
         Level::LevelService* level_service;
-        Player::PlayerService* playe_service;
+        Player::PlayerService* player_service;
 
         ServiceLocator();
         ~ServiceLocator();

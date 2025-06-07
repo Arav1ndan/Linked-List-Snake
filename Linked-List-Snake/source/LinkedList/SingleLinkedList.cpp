@@ -1,4 +1,7 @@
 #include "LinkedList/SingleLinkedList.h"
+#include "Player/BodyPart.h"
+#include "Level/LevelView.h"
+#include <iostream>
 
 namespace LinkedList {
 	
@@ -6,8 +9,8 @@ namespace LinkedList {
 	{
 		head_node = nullptr;
 	}
-	SingleLinkedList::~SingleLinkedList() = default;
-	
+
+	SingleLinkedList::~SingleLinkedList() = default;	
 	
 	void SingleLinkedList::initialize(float width, float height, sf::Vector2i position, Direction direction)
 	{
@@ -18,6 +21,14 @@ namespace LinkedList {
 	}
 	void SingleLinkedList::render()
 	{
+		head_node->body_part.render();
+	}
+	
+	void SingleLinkedList::createHeadNode()
+	{
+		head_node = createNode();
+		head_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+		return;
 	}
 	Node* SingleLinkedList::createNode()
 	{
