@@ -26,6 +26,7 @@ namespace Player {
 	}
 	void BodyPart::update()
 	{
+
 	}
 	void BodyPart::render()
 	{

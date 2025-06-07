@@ -14,6 +14,8 @@ namespace Player {
 
 		float bodypart_width;
 		float bodypart_height;
+
+		float getRotationAngle();
 	public:
 		BodyPart();
 		~BodyPart();
@@ -26,6 +28,7 @@ namespace Player {
 		void createBodyPartImage();
 		void initializeBodyPartImage();
 		sf::Vector2f getBodyPartScreenPosition();
+		
 		
 
 
