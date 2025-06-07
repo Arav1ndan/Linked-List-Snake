@@ -17,5 +17,6 @@ namespace Player {
 		void render();
 
 		void spawnPlayer();
+		float getCellWidth();
 	};
 }
