@@ -15,12 +15,16 @@ namespace Player {
 
 		const sf::Vector2i default_position = sf::Vector2i(25, 13);
 		const Direction default_direction = Direction::RIGHT;
+		const float movement_frame_duration = 0.1f;
+
+		float elapsed_duration;
 
 		LinkedList::SingleLinkedList* single_linked_list;
 		void createLinkedList();
 
 		SnakeState current_snake_state;
 		Direction current_snake_direction;
+		//Direction current_node_direction;
 
 		void processPlayerInput();
 		void updateSnakeDirection();
@@ -42,5 +46,7 @@ namespace Player {
 		void respawnSnake();
 		void setSnakeState(SnakeState state);
 		SnakeState getSnakeState();
+
+		void delayedUpdate();
 	};
 }

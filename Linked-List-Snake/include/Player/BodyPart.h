@@ -15,6 +15,8 @@ namespace Player {
 		float bodypart_width;
 		float bodypart_height;
 
+		Direction previous_direction;
+
 		float getRotationAngle();
 		
 
