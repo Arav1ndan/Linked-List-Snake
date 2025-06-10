@@ -16,7 +16,7 @@ namespace Player {
 		float bodypart_height;
 
 		float getRotationAngle();
-		void updatePosition();
+		
 
 		sf::Vector2i getNextPosition();
 		sf::Vector2i getNextPositionLeft();
@@ -40,5 +40,6 @@ namespace Player {
 		void setDirection(Direction direction);
 		Direction getDirection();
 		sf::Vector2i getPosition();
+		void updatePosition();
 	};
 }
