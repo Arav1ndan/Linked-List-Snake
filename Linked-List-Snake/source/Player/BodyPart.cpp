@@ -2,12 +2,15 @@
 #include "Level/LevelView.h"
 
 
+
 namespace Player {
 	using namespace Global;
 	using namespace Level;
 	
 	BodyPart::BodyPart()
 	{
+		grid_position = sf::Vector2i(0, 0);
+
 		createBodyPartImage();
 	}
 
@@ -51,11 +54,14 @@ namespace Player {
 	{
 		float x_screen_position = LevelView::border_offset_left + (grid_position.x * bodypart_width) + (bodypart_width / 2);
 		float y_screen_position = LevelView::border_offset_top + (grid_position.y * bodypart_height) + (bodypart_height / 2);
+
 		return sf::Vector2f(x_screen_position, y_screen_position);
 	}
 
 	void BodyPart::setDirection(Direction direction)
 	{
+		previous_direction = this->direction;
+
 		this->direction = direction;
 	}
 
@@ -77,10 +83,10 @@ namespace Player {
 			return 270.0f;
 			break;
 		case Player::Direction::DOWN:
-			return 180.0f;
+			return 180.0f; //90
 			break;
 		case Player::Direction::LEFT:
-			return 90.0f;
+			return 90.0f; //180
 			break;
 		case Player::Direction::RIGHT:
 			return 0.0f;
@@ -90,6 +96,7 @@ namespace Player {
 
 	void BodyPart::updatePosition()
 	{
+		grid_position = getNextPosition();
 		bodypart_image->setPosition(getBodyPartScreenPosition());
 		bodypart_image->setRotation(getRotationAngle());
 		bodypart_image->update();

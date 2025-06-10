@@ -68,7 +68,7 @@ namespace LinkedList {
 	{
 		Node* cur_node = head_node;
 
-		while (cur_node != head_node)
+		while (cur_node != nullptr)
 		{
 			Direction previous_direction = cur_node->body_part.getDirection();
 			cur_node->body_part.setDirection(direction_to_set);
@@ -80,7 +80,7 @@ namespace LinkedList {
 	{
 		Node* cur_node = head_node;
 
-		while (cur_node != head_node)
+		while (cur_node != nullptr)
 		{
 			cur_node->body_part.updatePosition();
 			cur_node = cur_node->next;
