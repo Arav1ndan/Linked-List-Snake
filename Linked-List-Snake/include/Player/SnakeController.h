@@ -24,7 +24,7 @@ namespace Player {
 
 		SnakeState current_snake_state;
 		Direction current_snake_direction;
-		//Direction current_node_direction;
+		
 
 		void processPlayerInput();
 		void updateSnakeDirection();

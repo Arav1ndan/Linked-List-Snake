@@ -176,7 +176,9 @@
     <ClInclude Include="include\Player\Direction.h" />
     <ClInclude Include="include\LinkedList\Node.h" />
     <ClInclude Include="include\Player\PlayerService.h" />
-    <ClInclude Include="include\Player\SnakeController.h" />
+    <ClInclude Include="include\Player\SnakeController.h">
+      <DeploymentContent>false</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="include\Time\TimeService.h" />
     <ClInclude Include="include\UI\Credits\CreditsScreenUIController.h" />
     <ClInclude Include="include\UI\Instructions\InstructionsScreenUIController.h" />
