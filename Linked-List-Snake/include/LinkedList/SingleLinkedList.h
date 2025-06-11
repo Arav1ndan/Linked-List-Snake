@@ -13,7 +13,7 @@ namespace LinkedList {
 		Node* createNode();
 
 		sf::Vector2i getNewNodePosition(Node* reference_node);
-	
+		
 
 
 	public:
@@ -28,5 +28,6 @@ namespace LinkedList {
 
 		void updateNodeDirection(Direction direction_to_set);
 		void updateNodePosition();
+		bool processNodeCollision();
 	};
 }
