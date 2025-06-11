@@ -60,6 +60,7 @@ namespace Level
 	void LevelService::spawnPlayer()
 	{
 		ServiceLocator::getInstance()->getLevelService()->spawnPlayer();
+		
 	}
 	//void LevelService::getCellWidth()
 	//{

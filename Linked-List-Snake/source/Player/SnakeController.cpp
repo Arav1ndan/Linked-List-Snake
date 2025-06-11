@@ -56,6 +56,7 @@ namespace Player {
 		for (int i = 0; i < initial_snake_length;i++) {
 			single_linked_list->insertNodeAtTail();
 		}
+		
 	}
 	void SnakeController::respawnSnake()
 	{
@@ -71,6 +72,9 @@ namespace Player {
 
 	void SnakeController::delayedUpdate()
 	{
+		processPlayerInput();
+
+
 		elapsed_duration += Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 		if (elapsed_duration >= movement_frame_duration)
