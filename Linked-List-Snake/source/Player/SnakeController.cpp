@@ -7,12 +7,13 @@ namespace Player {
 	using namespace LinkedList;
 	using namespace Global;
 	using namespace Level;
-	//using namespace Event;
+	using namespace Event;
 
 	SnakeController::SnakeController()
 	{
 		single_linked_list = nullptr;
 		createLinkedList();
+		current_snake_direction = default_direction;
 	}
 	SnakeController::~SnakeController()
 	{
@@ -30,6 +31,7 @@ namespace Player {
 		single_linked_list->initialize(width, height, default_position, default_direction);
 
 		spawnSnake();
+		//reset();
 	} 
 	
 	void SnakeController::update()
@@ -44,6 +46,7 @@ namespace Player {
 			break;	
 		case Player::SnakeState::DEAD:
 			handleRestart();
+			//respawnSnake();
 			break;
 		}
 	}
@@ -60,6 +63,9 @@ namespace Player {
 	}
 	void SnakeController::respawnSnake()
 	{
+		single_linked_list->removeAllNodes();
+		reset();
+		spawnSnake();
 	}
 	void SnakeController::setSnakeState(SnakeState state)
 	{
@@ -128,9 +134,18 @@ namespace Player {
 	}
 	void SnakeController::handleRestart()
 	{
+		restart_counter += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		if (restart_counter >= restart_duration) {
+			respawnSnake();
+		}
 	}
 	void SnakeController::reset()
 	{
+		current_snake_state = SnakeState::ALIVE;
+		current_snake_direction = default_direction;
+		elapsed_duration = 0.0f;
+		restart_counter = 0.0f;
 	}
 	void SnakeController::destory()
 	{
