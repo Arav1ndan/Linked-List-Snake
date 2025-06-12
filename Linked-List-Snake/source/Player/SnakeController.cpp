@@ -97,6 +97,9 @@ namespace Player {
 	
 	void SnakeController::processPlayerInput()
 	{
+		if (inputState == InputState::PROCESSING)
+			return;
+
 		Event::EventService* event_service = ServiceLocator::getInstance()->getEventService();
 
 		if (event_service->pressedUpArrowKey() && current_snake_direction != Direction::DOWN)
