@@ -22,7 +22,7 @@ namespace Player {
 	}
 	void PlayerService::update()
 	{
-		snake_controller->delayedUpdate();
+		snake_controller->update();
 	}
 	void PlayerService::render()
 	{

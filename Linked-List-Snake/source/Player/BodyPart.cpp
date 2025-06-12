@@ -83,10 +83,10 @@ namespace Player {
 			return 270.0f;
 			break;
 		case Player::Direction::DOWN:
-			return 180.0f; //90
+			return 90.0f; //180.0f; //90
 			break;
 		case Player::Direction::LEFT:
-			return 90.0f; //180
+			return 180.0f; //90.0f; //180
 			break;
 		case Player::Direction::RIGHT:
 			return 0.0f;
@@ -100,6 +100,8 @@ namespace Player {
 	void BodyPart::updatePosition()
 	{
 		grid_position = getNextPosition();
+
+
 		bodypart_image->setPosition(getBodyPartScreenPosition());
 		bodypart_image->setRotation(getRotationAngle());
 		bodypart_image->update();
