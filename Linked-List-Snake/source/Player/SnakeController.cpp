@@ -56,6 +56,8 @@ namespace Player {
 	}
 	void SnakeController::spawnSnake()
 	{
+		
+
 		for (int i = 0; i < initial_snake_length;i++) {
 			single_linked_list->insertNodeAtTail();
 		}
@@ -97,6 +99,9 @@ namespace Player {
 	
 	void SnakeController::processPlayerInput()
 	{
+		if (inputState == InputState::PROCESSING)
+			return;
+
 		Event::EventService* event_service = ServiceLocator::getInstance()->getEventService();
 
 		if (event_service->pressedUpArrowKey() && current_snake_direction != Direction::DOWN)

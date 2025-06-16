@@ -96,5 +96,7 @@ namespace Global
 
 	Player::PlayerService* ServiceLocator::getPlayeService() { return player_service; }
 
+	Element::ElementService* ServiceLocator::getElementService(){ return element_service; }
+
 	void ServiceLocator::deleteServiceLocator() { delete(this); }
 }

@@ -12,12 +12,13 @@ namespace LinkedList {
 
 	SingleLinkedList::~SingleLinkedList() = default;	
 	
-	void SingleLinkedList::initialize(float width, float height, sf::Vector2i position, Direction direction)
+	void SingleLinkedList::initialize(float width, float height, sf::Vector2i position, Player::Direction direction)
 	{
 		node_width = width;
 		node_height = height;
 		default_position = position;
 		default_direction = direction;
+
 	}
 	void SingleLinkedList::render()
 	{
@@ -146,7 +147,7 @@ namespace LinkedList {
 			cur_node = cur_node->next;
 		}
 		cur_node->next = new_node;
-		new_node->body_part.initialize(node_width, node_width, getNewNodePosition(cur_node), cur_node->body_part.getDirection());
+		new_node->body_part.initialize(node_width, node_height, getNewNodePosition(cur_node), cur_node->body_part.getDirection());
 	}
 }
 
