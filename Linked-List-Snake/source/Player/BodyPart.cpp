@@ -69,10 +69,13 @@ namespace Player {
 	{
 		return direction;
 	}
-
+	void BodyPart::setPosition(sf::Vector2i position)
+	{
+		grid_position = position;
+	}
 	sf::Vector2i BodyPart::getPosition()
 	{
-		return sf::Vector2i(grid_position);
+		return grid_position;
 	}
 
 	float BodyPart::getRotationAngle()
@@ -93,16 +96,13 @@ namespace Player {
 			break;
 		}
 	}
-	void BodyPart::setPosition(sf::Vector2i position)
-	{
-		grid_position = position;
-	}
 	void BodyPart::updatePosition()
 	{
 		grid_position = getNextPosition();
 
+		sf::Vector2f screenPosition = getBodyPartScreenPosition();
 
-		bodypart_image->setPosition(getBodyPartScreenPosition());
+		bodypart_image->setPosition(screenPosition);
 		bodypart_image->setRotation(getRotationAngle());
 		bodypart_image->update();
 	}

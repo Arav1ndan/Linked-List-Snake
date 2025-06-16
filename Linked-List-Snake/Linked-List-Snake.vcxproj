@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Elements\ElementService.cpp" />
     <ClCompile Include="source\Elements\Obstacle.cpp" />
     <ClCompile Include="source\LinkedList\SingleLinkedList.cpp" />
     <ClCompile Include="source\Player\BodyPart.cpp" />

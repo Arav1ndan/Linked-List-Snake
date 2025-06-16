@@ -25,7 +25,7 @@ namespace Player {
 		sf::Vector2i getNextPositionRight();
 		sf::Vector2i getNextPositionUp();
 		sf::Vector2i getNextPositionDown();
-		void setPosition(sf::Vector2i position);
+		//void setPosition(sf::Vector2i position);
 
 	public:
 		BodyPart();
@@ -36,13 +36,18 @@ namespace Player {
 		void render();
 		void destroy();
 
+
+		void setDirection(Direction direction);
+		Direction getDirection();
+
 		void createBodyPartImage();
 		void initializeBodyPartImage();
 		sf::Vector2f getBodyPartScreenPosition();
-		void setDirection(Direction direction);
-		Direction getDirection();
-		sf::Vector2i getPosition();
+		
+		void setPosition(sf::Vector2i position);
+		sf::Vector2i getPosition();		
 		sf::Vector2i getNextPosition();
+
 		void updatePosition();
 	};
 }
