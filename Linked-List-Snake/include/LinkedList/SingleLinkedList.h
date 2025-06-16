@@ -26,6 +26,9 @@ namespace LinkedList {
 		void createHeadNode();
 		void insertNodeAtTail();
 
+		std::vector<sf::Vector2i> getNodesPositionList();
+
+		
 		void updateNodeDirection(Direction direction_to_set);
 		void updateNodePosition();
 		bool processNodeCollision();

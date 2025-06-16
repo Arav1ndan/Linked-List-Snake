@@ -69,7 +69,7 @@ namespace UI
 		}
 		void LevelSelectionUIController::initializeButtons()
 		{
-			level_one_button->initialize("Singly Linked List", Config::level_one_button_texture_path, button_width, button_height, sf::Vector2f(0, level_one_button_y_position));
+			level_one_button->initialize("SinglyLinkedList", Config::level_one_button_texture_path, button_width, button_height, sf::Vector2f(0, level_one_button_y_position));
 			level_two_button->initialize("Doubly Linked List", Config::level_two_button_texture_path, button_width, button_height, sf::Vector2f(0, level_two_button_y_position));
 			menu_button->initialize("Menu", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(0, menu_button_y_position));
 
@@ -85,9 +85,11 @@ namespace UI
 		}
 		void LevelSelectionUIController::singleLinkedListButtonCallback()
 		{
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			
 			GameService::setGameState(GameState::GAMEPLAY);
 			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::ONE);
+			//ServiceLocator::getInstance()->getLevelService()->set
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 		}
 		void LevelSelectionUIController::doubleLinkedListButtonCallback()
 		{

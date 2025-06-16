@@ -26,14 +26,6 @@ namespace Food {
 
 		initializeFoodImage();
 	}
-	void FoodItem::update()
-	{
-		food_image->update();
-	}
-	void FoodItem::render()
-	{
-		food_image->render();
-	}
 	void FoodItem::initializeFoodImage()
 	{
 		sf::Vector2f screen_position = getFoodImagePosition();
@@ -42,6 +34,15 @@ namespace Food {
 		food_image->initialize(food_texture_path, cell_width, cell_height, screen_position);
 		food_image->show();
 	}
+	void FoodItem::update()
+	{
+		food_image->update();
+	}
+	void FoodItem::render()
+	{
+		food_image->render();
+	}
+	
 	sf::String FoodItem::getFoodTexturePath()
 	{
 		switch (food_type)
