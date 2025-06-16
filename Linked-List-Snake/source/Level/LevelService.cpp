@@ -10,6 +10,8 @@ namespace Level
 	LevelService::LevelService()
 	{
 		level_controller = nullptr;
+		//level_controller = new LevelController();
+
 
 		createLevelController();
 	}
@@ -49,11 +51,18 @@ namespace Level
 		return level_controller->getCellHeight();
 	}
 
+	void LevelService::spawnFood()
+	{
+		ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
+	}
+
 	void LevelService::createLevel(LevelNumber level_to_load)
 	{
 		current_level = level_to_load;
 		spawnLevelElements(level_to_load);
+		spawnFood();
 		spawnPlayer();
+		
 	}
 
 	void LevelService::spawnLevelElements(LevelNumber level_to_load)
