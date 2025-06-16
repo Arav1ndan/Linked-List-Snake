@@ -40,9 +40,10 @@ namespace Player {
 		{
 		case Player::SnakeState::ALIVE:
 			processPlayerInput();
-			updateSnakeDirection();
-			processSnakeCollision();
-			moveSnake();
+			//updateSnakeDirection();
+			//processSnakeCollision();
+			delayedUpdate();
+			//moveSnake();
 			break;	
 		case Player::SnakeState::DEAD:
 			handleRestart();
@@ -76,6 +77,11 @@ namespace Player {
 	SnakeState SnakeController::getSnakeState()
 	{
 		return current_snake_state;
+	}
+
+	std::vector<sf::Vector2i> SnakeController::getCurrentSnakePositionList()
+	{
+		return single_linked_list->getNodesPositionList();
 	}
 
 	void SnakeController::delayedUpdate()
