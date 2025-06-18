@@ -41,6 +41,14 @@ namespace Level
 		level_controller->render();
 	}
 
+	void LevelService::createLevel(LevelNumber level_to_load)
+	{
+		current_level = level_to_load;
+		spawnLevelElements(level_to_load);
+		spawnFood();
+		spawnPlayer();
+
+	}
 	float LevelService::getCellWidth()
 	{
 		return level_controller->getCellWidth(); 
@@ -55,16 +63,6 @@ namespace Level
 	{
 		ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
 	}
-
-	void LevelService::createLevel(LevelNumber level_to_load)
-	{
-		current_level = level_to_load;
-		spawnLevelElements(level_to_load);
-		spawnFood();
-		spawnPlayer();
-		
-	}
-
 	void LevelService::spawnLevelElements(LevelNumber level_to_load)
 	{
 		float cell_width = level_controller->getCellWidth();
@@ -72,19 +70,14 @@ namespace Level
 
 		std::vector<Element::ElementData> elemetDataList = level_controller->getElementDataList((int)level_to_load);
 		ServiceLocator::getInstance()->getElementService()->spawnElements(elemetDataList, cell_width, cell_height);
-	}
-
-	void LevelService::destroy()
-	{
-		delete level_controller;
-	}
+	}	
 	void LevelService::spawnPlayer()
 	{
-		ServiceLocator::getInstance()->getLevelService()->spawnPlayer();
+		ServiceLocator::getInstance()->getPlayerService()->spawnPlayer();
 		
 	}
-	//void LevelService::getCellWidth()
-	//{
-		//return 
-	//}
+	void LevelService::destroy()
+	{
+		delete(level_controller);
+	}
 }

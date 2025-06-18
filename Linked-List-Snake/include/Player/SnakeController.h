@@ -46,6 +46,10 @@ namespace Player {
 		void reset();
 		void destory();
 
+		void processBodyCollision();
+		void processElementsCollision();
+		void processFoodCollision();
+
 	public:
 		SnakeController();
 		~SnakeController();

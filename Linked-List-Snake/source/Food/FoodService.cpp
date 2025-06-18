@@ -23,7 +23,7 @@ namespace Food
 
 	void FoodService::initialize()
 	{
-		elapsed_duration = spawn_duration;
+		elapsed_duration = spawn_duration;		
 	}
 
 	void FoodService::update()
@@ -34,12 +34,19 @@ namespace Food
 			handleFoodSpawning();
 		}
 
-		if (current_food_item) current_food_item->update();
+		if (current_food_item)current_food_item->update();
 	}
 
 	void FoodService::render()
 	{
-		if (current_food_item) current_food_item->render();
+		if (current_food_item)current_food_item->render();
+	}
+	void FoodService::spawningFood()
+	{
+		cell_width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
+		cell_height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
+
+		spawnFood();
 	}
 	void FoodService::handleFoodSpawning()
 	{
@@ -56,6 +63,7 @@ namespace Food
 
 		cell_width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
 		cell_height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
+		spawnFood();
 	}
 
 	void FoodService::stopFoodSpawning()
@@ -74,12 +82,13 @@ namespace Food
 
 	void FoodService::spawnFood()
 	{
+		//current_food_item = createFood(sf::Vector2i(4, 6), FoodType::ALCOHOL);
 		current_food_item = createFood(getValidSpawnPosition(), getRandomFoodType());
 	}
 
 	sf::Vector2i FoodService::getValidSpawnPosition()
 	{
-		std::vector<sf::Vector2i> player_position_data = ServiceLocator::getInstance()->getPlayeService()->getCurrentSnakePositionList();
+		std::vector<sf::Vector2i> player_position_data = ServiceLocator::getInstance()->getPlayerService()->getCurrentSnakePositionList();
 		std::vector<sf::Vector2i> elements_position_data = ServiceLocator::getInstance()->getElementService()->getElementPositionList();
 		sf::Vector2i spawn_position;
 
