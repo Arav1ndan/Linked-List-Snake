@@ -42,7 +42,7 @@ namespace Global
         UI::UIService* getUIService();
         Time::TimeService* getTimeService();
         Level::LevelService* getLevelService();
-        Player::PlayerService* getPlayeService();
+        Player::PlayerService* getPlayerService();
         Element::ElementService* getElementService();
         Food::FoodService* getFoodService();
         void deleteServiceLocator();

@@ -54,6 +54,7 @@ namespace Food
 		void initialize();
 		void update();
 		void render();
+		void spawningFood();
 
 		void startFoodSpawning();
 		void stopFoodSpawning();

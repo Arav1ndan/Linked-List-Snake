@@ -142,10 +142,9 @@ namespace Player {
 	}
 	void SnakeController::processSnakeCollision()
 	{
-		if (single_linked_list->processNodeCollision())
-		{
-			current_snake_state = SnakeState::DEAD;
-		}
+		processBodyCollision();
+		processElementsCollision();
+		processFoodCollision();
 	}
 	void SnakeController::handleRestart()
 	{
@@ -167,6 +166,10 @@ namespace Player {
 	void SnakeController::destory()
 	{
 		delete(single_linked_list);
+	}
+	void SnakeController::processBodyCollision()
+	{
+
 	}
 }
 

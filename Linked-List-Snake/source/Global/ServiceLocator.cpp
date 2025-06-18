@@ -13,6 +13,7 @@ namespace Global
 	using namespace Player;
 	using namespace Element;
 	using namespace Food;
+
 	ServiceLocator::ServiceLocator()
 	{
 		graphic_service = nullptr;
@@ -21,9 +22,10 @@ namespace Global
 		ui_service = nullptr;
 		time_service = nullptr;
 		level_service = nullptr;
-		player_service = nullptr;
 		element_service = nullptr;
 		food_service = nullptr;
+		player_service = nullptr;
+		
 		createServices();
 	}
 
@@ -50,9 +52,10 @@ namespace Global
 		ui_service->initialize();
 		time_service->initialize();
 		level_service->initialize();
-		player_service->initialize();
 		element_service->initialize();
 		food_service->initialize();
+		player_service->initialize();
+		
 	}
 
 	void ServiceLocator::update()
@@ -62,13 +65,16 @@ namespace Global
 		
 		time_service->update();
 		// level serive.
-		//if (GameService::getGameState() == GameState::GAMEPLAY)
-		//{
-			level_service->update();
-			player_service->update();
-			element_service->update();
-			food_service->update();
-		//}
+		level_service->update();
+		element_service->update();
+		food_service->update();
+		player_service->update();
+		
+	/*	if (GameService::getGameState() == GameState::GAMEPLAY)
+		{
+			
+			
+		}*/
 		ui_service->update();
 	}
 
@@ -76,13 +82,17 @@ namespace Global
 	{
 		ui_service->render();
 		graphic_service->render();
-		//if (GameService::getGameState() == GameState::GAMEPLAY)
-		//{
-			level_service->render();
-			player_service->render();
-			element_service->render();
-			food_service->render();
-		//}
+
+		level_service->render();
+		element_service->render();
+		food_service->render();
+		player_service->render();
+		
+		/*if (GameService::getGameState() == GameState::GAMEPLAY)
+		{
+			
+			
+		}*/
 		
 	}
 
@@ -117,7 +127,7 @@ namespace Global
 
 	Level::LevelService* ServiceLocator::getLevelService() { return level_service; }
 
-	Player::PlayerService* ServiceLocator::getPlayeService() { return player_service; }
+	Player::PlayerService* ServiceLocator::getPlayerService() { return player_service; }
 
 	Element::ElementService* ServiceLocator::getElementService(){ return element_service; }
 
