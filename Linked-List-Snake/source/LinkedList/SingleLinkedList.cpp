@@ -19,6 +19,8 @@ namespace LinkedList {
 		default_position = position;
 		default_direction = direction;
 
+		linked_list_size = 0;
+
 	}
 	void SingleLinkedList::initializeNode(Node* new_node, Node* reference_node, Operation operation)
 	{
@@ -45,6 +47,11 @@ namespace LinkedList {
 
 	
 	
+	Node* SingleLinkedList::createNode()
+	{
+		return new Node();
+	}
+
 	//void SingleLinkedList::createHeadNode()
 	//{
 	//	head_node = createNode();
@@ -96,6 +103,22 @@ namespace LinkedList {
 		}
 
 		return false;
+	}
+	void SingleLinkedList::insertNodeAtHead()
+	{
+		linked_list_size++;
+		Node* new_node = createNode();
+
+		if (head_node == nullptr)
+		{
+			head_node = new_node;
+			initializeNode(new_node, nullptr, Operation::HEAD);
+			return;
+		}
+
+		initializeNode(new_node, head_node, Operation::HEAD);
+		new_node->next = head_node;
+		head_node = new_node;
 	}
 	//void SingleLinkedList::removeNodeAtHead()
 	//{
@@ -171,27 +194,29 @@ namespace LinkedList {
 			cur_node = cur_node->next;
 		}
 	}
-	/*void SingleLinkedList::insertNodeAtTail()
+	void SingleLinkedList::insertNodeAtTail()
 	{
+		linked_list_size++;
 		Node* new_node = createNode();
 		Node* cur_node = head_node;
 
 		if (cur_node == nullptr)
 		{
 			head_node = new_node;
-			new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+			initializeNode(new_node, nullptr, Operation::TAIL);
 			return;
 		}
 
-		while (cur_node->next != nullptr) {
+		while (cur_node->next != nullptr)
+		{
 			cur_node = cur_node->next;
 		}
 		cur_node->next = new_node;
-		new_node->body_part.initialize(node_width, node_height, getNewNodePosition(cur_node), cur_node->body_part.getDirection());
+		initializeNode(new_node, cur_node, Operation::TAIL);
 	}
 	Node* SingleLinkedList::getHeadNode()
 	{
 		return  head_node;
-	}*/
+	}
 }
 
