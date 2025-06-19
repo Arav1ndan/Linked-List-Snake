@@ -20,6 +20,17 @@ namespace LinkedList {
 		default_direction = direction;
 
 	}
+	void SingleLinkedList::initializeNode(Node* new_node, Node* reference_node, Operation operation)
+	{
+		if (reference_node == nullptr)
+		{
+			new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+			return;
+		}
+		sf::Vector2i position = getNewNodePosition(reference_node, operation);
+
+		new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
+	}
 	void SingleLinkedList::render()
 	{
 		Node* cur_node = head_node;
@@ -31,17 +42,19 @@ namespace LinkedList {
 		}
 		
 	}
+
 	
-	void SingleLinkedList::createHeadNode()
-	{
-		head_node = createNode();
-		head_node->body_part.initialize(node_width, node_height, default_position, default_direction);
-		return;
-	}
-	Node* SingleLinkedList::createNode()
-	{
-		return new Node();
-	}
+	
+	//void SingleLinkedList::createHeadNode()
+	//{
+	//	head_node = createNode();
+	//	head_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+	//	return;
+	//}
+	//Node* SingleLinkedList::createNode()
+	//{
+	//	return new Node();
+	//}
 	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node)
 	{
 		Direction reference_direction = reference_node->body_part.getDirection();
@@ -84,31 +97,31 @@ namespace LinkedList {
 
 		return false;
 	}
-	void SingleLinkedList::removeNodeAtHead()
-	{
-		Node* cur_node = head_node;
-		head_node = head_node->next;
+	//void SingleLinkedList::removeNodeAtHead()
+	//{
+	//	Node* cur_node = head_node;
+	//	head_node = head_node->next;
 
-		cur_node->next = nullptr;
-		delete(cur_node);
-	}
-	void SingleLinkedList::removeAllNodes()
-	{
-		Node* cur_node = head_node;
-		
-		while (cur_node->next != nullptr)
-		{
-			Node* next_node = cur_node->next;
-			delete(cur_node);
-			cur_node = next_node;
-		}
-		head_node = nullptr;
+	//	cur_node->next = nullptr;
+	//	delete(cur_node);
+	//}
+	//void SingleLinkedList::removeAllNodes()
+	//{
+	//	Node* cur_node = head_node;
+	//	
+	//	while (cur_node->next != nullptr)
+	//	{
+	//		Node* next_node = cur_node->next;
+	//		delete(cur_node);
+	//		cur_node = next_node;
+	//	}
+	//	head_node = nullptr;
 
-		/*if (head_node == nullptr) return;
-		while (head_node != nullptr) {
-			removeNodeAtHead();
-		}*/
-	}
+	//	/*if (head_node == nullptr) return;
+	//	while (head_node != nullptr) {
+	//		removeNodeAtHead();
+	//	}*/
+	//}
 	std::vector<sf::Vector2i> SingleLinkedList::getNodesPositionList()
 	{
 		std::vector<sf::Vector2i> nodes_position_list;
@@ -122,6 +135,18 @@ namespace LinkedList {
 		}
 
 		return nodes_position_list;
+	}
+
+	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
+	{
+		switch (operation)
+		{
+		case LinkedList::Operation::HEAD:
+			return reference_node->body_part.getNextPosition();
+		case LinkedList::Operation::TAIL:
+			return reference_node->body_part.getPrevPosition();
+		}
+		return default_position;
 	}
 	
 	void SingleLinkedList::updateNodeDirection(Direction direction_to_set)
@@ -146,7 +171,7 @@ namespace LinkedList {
 			cur_node = cur_node->next;
 		}
 	}
-	void SingleLinkedList::insertNodeAtTail()
+	/*void SingleLinkedList::insertNodeAtTail()
 	{
 		Node* new_node = createNode();
 		Node* cur_node = head_node;
@@ -167,6 +192,6 @@ namespace LinkedList {
 	Node* SingleLinkedList::getHeadNode()
 	{
 		return  head_node;
-	}
+	}*/
 }
 
