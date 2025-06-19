@@ -23,6 +23,8 @@ namespace LinkedList {
 		
 		int linked_list_size;
 
+		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
+
 	public:
 		SingleLinkedList();
 		~SingleLinkedList();
@@ -32,8 +34,8 @@ namespace LinkedList {
 
 		
 
-		void createHeadNode();
-		void insertNodeAtTail();
+		
+		
 
 		Node* getHeadNode();
 
@@ -44,10 +46,14 @@ namespace LinkedList {
 		void updateNodePosition();
 
 		bool processNodeCollision();
+		
+
+		void createHeadNode();
+		void insertNodeAtHead();
+		void insertNodeAtTail();
+		void insertNodeAtIndex(int index);
 		void removeNodeAtHead();
 		void removeAllNodes();
-
-		void insertNodeAtHead();
 
 	};
 }
