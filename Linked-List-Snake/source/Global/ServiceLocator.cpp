@@ -64,17 +64,15 @@ namespace Global
 		event_service->update();
 		
 		time_service->update();
-		// level serive.
-		level_service->update();
-		element_service->update();
-		food_service->update();
-		player_service->update();
+		// level serive.		
 		
-	/*	if (GameService::getGameState() == GameState::GAMEPLAY)
+		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
-			
-			
-		}*/
+			level_service->update();
+			element_service->update();
+			food_service->update();
+			player_service->update();
+		}
 		ui_service->update();
 	}
 
@@ -82,17 +80,14 @@ namespace Global
 	{
 		ui_service->render();
 		graphic_service->render();
-
-		level_service->render();
-		element_service->render();
-		food_service->render();
-		player_service->render();
 		
-		/*if (GameService::getGameState() == GameState::GAMEPLAY)
+		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
-			
-			
-		}*/
+			level_service->render();
+			element_service->render();
+			food_service->render();
+			player_service->render();
+		}
 		
 	}
 

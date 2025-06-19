@@ -29,7 +29,7 @@ namespace Level {
 		static const int border_offset_left = 40;
 		static const int border_offset_top = 40;
 
-		LevelView();
+		LevelView(LevelController* controller);
 		~LevelView();
 
 		void initialize();

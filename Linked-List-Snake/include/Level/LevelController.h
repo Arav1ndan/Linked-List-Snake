@@ -2,7 +2,7 @@
 #include "../../include/Level/LevelModel.h"
 
 namespace Level {
-	//class LevelModel;
+	class LevelModel;
 	class LevelView;
 	class LevelController {
 	private:

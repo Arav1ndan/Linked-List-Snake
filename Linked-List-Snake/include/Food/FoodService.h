@@ -17,11 +17,11 @@ namespace Food
 	class FoodService
 	{
 	private:
-		const float spawn_duration = 4.f;
+		const float spawn_duration = 400.f;
 
 		float elapsed_duration;
 
-		FoodSpawningStatus current_spawning_status;
+		FoodSpawningStatus current_spawning_status = FoodSpawningStatus::IN_ACTIVE;
 		FoodItem* current_food_item;
 
 		float cell_width;
@@ -42,7 +42,7 @@ namespace Food
 
 		bool isValidPosition(std::vector<sf::Vector2i> position_data, sf::Vector2i food_position);
 
-		void destroyFood();
+		
 		void updateElapsedDuration();
 		void handleFoodSpawning();
 		void reset();
@@ -56,7 +56,11 @@ namespace Food
 		void render();
 		void spawningFood();
 
+		void destroyFood();
+
 		void startFoodSpawning();
 		void stopFoodSpawning();
+
+		bool processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type);
 	};
 }

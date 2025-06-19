@@ -26,6 +26,8 @@ namespace LinkedList {
 		void createHeadNode();
 		void insertNodeAtTail();
 
+		Node* getHeadNode();
+
 		std::vector<sf::Vector2i> getNodesPositionList();
 
 		

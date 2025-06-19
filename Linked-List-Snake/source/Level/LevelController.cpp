@@ -6,7 +6,7 @@ namespace Level {
 	LevelController::LevelController()
 	{
 		level_model = new LevelModel();
-		level_view = new LevelView();
+		level_view = new LevelView(this);
 	}
 	LevelController::~LevelController()
 	{
