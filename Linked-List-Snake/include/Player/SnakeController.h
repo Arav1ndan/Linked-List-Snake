@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "Player/Direction.h"
 #include "LinkedList/SingleLinkedList.h"
+#include "LinkedList/Node.h"
+#include "Food/FoodType.h"
 
 namespace Player {
 	using namespace LinkedList;
@@ -64,6 +66,8 @@ namespace Player {
 		SnakeState getSnakeState();
 
 		std::vector<sf::Vector2i> getCurrentSnakePositionList();
+
+		void OnFoodCollected(Food::FoodType food_type);
 
 		void delayedUpdate();
 	};

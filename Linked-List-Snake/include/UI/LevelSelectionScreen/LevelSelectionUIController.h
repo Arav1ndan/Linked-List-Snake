@@ -27,9 +27,8 @@ namespace UI {
 			void createButtons();
 			void initializeBackgroundImage();
 			void initializeButtons();
-			void calculateLeftOffsetForButton();
+		
 			void registerButtonCallback();
-
 			void singleLinkedListButtonCallback();
 			void doubleLinkedListButtonCallback();
 			void menuButtonCallback();

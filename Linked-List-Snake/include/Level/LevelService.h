@@ -29,5 +29,7 @@ namespace Level {
         void createLevel(LevelNumber level_to_load); 
 
         void spawnLevelElements(LevelNumber level_to_load);
+
+        void setCurrentLevelNumber(LevelNumber level_to_load);
 	};
 }

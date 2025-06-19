@@ -2,6 +2,7 @@
 #include "Level/LevelService.h"
 #include "Global/ServiceLocator.h"
 #include "Event/EventService.h"
+#include "Elements/ElementService.h"
 
 namespace Player {
 	using namespace LinkedList;
@@ -169,7 +170,24 @@ namespace Player {
 	}
 	void SnakeController::processBodyCollision()
 	{
+		if (single_linked_list->processNodeCollision())
+		{
+			current_snake_state = SnakeState::DEAD;
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::DEATH);
+		}
+	}
+	void SnakeController::processElementsCollision()
+	{
+		Element::ElementService* element_service = ServiceLocator::getInstance()->getElementService();
 
+		if (element_service->processElementsCollision(single_linked_list->getHeadNode()))
+		{
+			current_snake_state = SnakeState::DEAD;
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::DEATH);
+		}
+	}
+	void SnakeController::processFoodCollision()
+	{
 	}
 }
 

@@ -8,8 +8,9 @@ namespace Level
     using namespace UI::UIElement;
     using namespace Global;
 
-    LevelView::LevelView()
+    LevelView::LevelView(LevelController* controller)
     {
+        LevelController* level_controller = controller;
         createViews();
     }
 

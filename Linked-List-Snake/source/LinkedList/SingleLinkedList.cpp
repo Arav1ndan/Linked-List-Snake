@@ -164,5 +164,9 @@ namespace LinkedList {
 		cur_node->next = new_node;
 		new_node->body_part.initialize(node_width, node_height, getNewNodePosition(cur_node), cur_node->body_part.getDirection());
 	}
+	Node* SingleLinkedList::getHeadNode()
+	{
+		return  head_node;
+	}
 }
 

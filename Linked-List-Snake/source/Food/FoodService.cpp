@@ -63,7 +63,7 @@ namespace Food
 
 		cell_width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
 		cell_height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
-		spawnFood();
+		//spawnFood();
 	}
 
 	void FoodService::stopFoodSpawning()
@@ -71,6 +71,16 @@ namespace Food
 		current_spawning_status = FoodSpawningStatus::IN_ACTIVE;
 		destroyFood();
 		reset();
+	}
+
+	bool FoodService::processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type)
+	{
+		if (current_food_item && current_food_item->getFoodPosition() == head_node->body_part.getPosition())
+		{
+			out_food_type = current_food_item->getFoodType();
+			return true;
+		}
+		return false;
 	}
 
 	FoodItem* FoodService::createFood(sf::Vector2i position, FoodType type)
