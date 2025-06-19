@@ -3,13 +3,14 @@
 #include "Global/ServiceLocator.h"
 #include "Event/EventService.h"
 #include "Elements/ElementService.h"
+#include "Food/FoodService.h"
 
 namespace Player {
 	using namespace LinkedList;
 	using namespace Global;
 	using namespace Level;
 	using namespace Event;
-
+	using namespace Food;
 	SnakeController::SnakeController()
 	{
 		single_linked_list = nullptr;
@@ -58,8 +59,6 @@ namespace Player {
 	}
 	void SnakeController::spawnSnake()
 	{
-		
-
 		for (int i = 0; i < initial_snake_length;i++) {
 			single_linked_list->insertNodeAtTail();
 		}
@@ -84,6 +83,10 @@ namespace Player {
 	{
 		return single_linked_list->getNodesPositionList();
 	}
+
+	
+
+	
 
 	void SnakeController::delayedUpdate()
 	{
@@ -188,6 +191,53 @@ namespace Player {
 	}
 	void SnakeController::processFoodCollision()
 	{
+		Food::FoodService* food_service = ServiceLocator::getInstance()->getFoodService();
+		Food::FoodType food_type;
+
+		if (food_service->processFoodCollision(single_linked_list->getHeadNode(), food_type))
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::PICKUP);
+
+			food_service->destroyFood();
+			OnFoodCollected(food_type);
+		}
+	}
+	void SnakeController::OnFoodCollected(Food::FoodType food_type)
+	{
+		switch (food_type)
+		{
+		case FoodType::PIZZA:
+			//Insert At Tail
+			break;
+
+		case FoodType::BURGER:
+			//Insert At Head
+			break;
+
+		case FoodType::CHEESE:
+			//Insert in Middle
+			break;
+
+		case FoodType::APPLE:
+			//Delete at Head
+			break;
+
+		case FoodType::MANGO:
+			//Delete at Middle
+			break;
+
+		case FoodType::ORANGE:
+			//Delete at Tail
+			break;
+
+		case FoodType::POISION:
+			//Delete half the snake
+			break;
+
+		case FoodType::ALCOHOL:
+			//Reverse the snake
+			break;
+		}
 	}
 }
 

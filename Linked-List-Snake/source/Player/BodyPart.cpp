@@ -107,6 +107,27 @@ namespace Player {
 		bodypart_image->update();
 	}
 
+	sf::Vector2i BodyPart::getPrevPosition()
+	{
+		switch (direction)
+		{
+		case Player::Direction::UP:
+			return getNextPositionDown();
+			
+		case Player::Direction::DOWN:
+			return getNextPositionUp();
+		
+		case Player::Direction::LEFT:
+			return getNextPositionRight();
+	
+		case Player::Direction::RIGHT:
+			return getNextPositionLeft();
+	
+		default:
+			return grid_position;
+		}
+	}
+
 	sf::Vector2i BodyPart::getNextPosition()
 	{
 		switch (direction)
