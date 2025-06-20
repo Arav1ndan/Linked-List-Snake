@@ -47,11 +47,13 @@ namespace LinkedList {
 
 		bool processNodeCollision();
 		
+		int findMiddleNode();
 
 		void createHeadNode();
 		void insertNodeAtHead();
 		void insertNodeAtTail();
 		void insertNodeAtIndex(int index);
+		void insertNodeAtMiddle();
 		void removeNodeAtHead();
 		void removeAllNodes();
 

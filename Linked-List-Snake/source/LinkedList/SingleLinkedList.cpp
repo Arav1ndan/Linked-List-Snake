@@ -121,14 +121,15 @@ namespace LinkedList {
 		new_node->next = head_node;
 		head_node = new_node;
 	}
-	//void SingleLinkedList::removeNodeAtHead()
-	//{
-	//	Node* cur_node = head_node;
-	//	head_node = head_node->next;
+	void SingleLinkedList::removeNodeAtHead()
+	{
+		Node* cur_node = head_node;
+		head_node = head_node->next;
 
-	//	cur_node->next = nullptr;
-	//	delete(cur_node);
-	//}
+		cur_node->next = nullptr;
+		delete(cur_node);
+		linked_list_size--;
+	}
 	//void SingleLinkedList::removeAllNodes()
 	//{
 	//	Node* cur_node = head_node;
