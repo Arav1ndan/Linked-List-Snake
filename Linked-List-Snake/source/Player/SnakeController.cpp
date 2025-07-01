@@ -106,6 +106,21 @@ namespace Player {
 			inputState = InputState::WAITING;
 		}
 	}
+
+	int SnakeController::getPlayerScore()
+	{
+		return player_score;
+	}
+
+	TimeComplexity SnakeController::getTimeComplexity()
+	{
+		return time_complexity;
+	}
+
+	LinkedListOperations SnakeController::getLastOperation()
+	{
+		return last_linked_list_operation;
+	}
 	
 	void SnakeController::processPlayerInput()
 	{
@@ -164,6 +179,7 @@ namespace Player {
 		current_snake_direction = default_direction;
 		elapsed_duration = 0.0f;
 		restart_counter = 0.0f;
+		player_score = 0;
 
 		inputState = InputState::WAITING;
 	}
@@ -198,8 +214,10 @@ namespace Player {
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::PICKUP);
 
+			player_score++;
 			food_service->destroyFood();
 			OnFoodCollected(food_type);
+			
 		}
 	}
 	void SnakeController::OnFoodCollected(Food::FoodType food_type)

@@ -30,6 +30,8 @@ namespace Level {
 
         void spawnLevelElements(LevelNumber level_to_load);
 
+        LevelNumber getCurrentLevel();
+
         void setCurrentLevelNumber(LevelNumber level_to_load);
 	};
 }

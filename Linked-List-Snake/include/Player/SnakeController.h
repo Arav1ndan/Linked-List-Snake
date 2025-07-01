@@ -7,6 +7,25 @@
 
 namespace Player {
 	using namespace LinkedList;
+	enum class TimeComplexity
+	{
+		NONE,
+		ONE,
+		N,
+	};
+
+	enum class LinkedListOperations
+	{
+		NONE,
+		INSERT_AT_HEAD,
+		INSERT_AT_TAIL,
+		INSERT_AT_MID,
+		REMOVE_AT_HEAD,
+		REMOVE_AT_TAIL,
+		REMOVE_AT_MID,
+		DELETE_HALF_LIST,
+		REVERSE_LIST,
+	};
 	enum class SnakeState {
 		ALIVE,
 		DEAD,
@@ -40,6 +59,9 @@ namespace Player {
 		const float restart_duration = 2.f;
 		float restart_counter;
 
+
+		TimeComplexity time_complexity;
+		LinkedListOperations last_linked_list_operation;
 		void processPlayerInput();
 		void updateSnakeDirection();
 		void moveSnake();
@@ -52,6 +74,8 @@ namespace Player {
 		void processElementsCollision();
 		void processFoodCollision();
 
+
+		int player_score = 0;
 	public:
 		SnakeController();
 		~SnakeController();
@@ -70,5 +94,10 @@ namespace Player {
 		void OnFoodCollected(Food::FoodType food_type);
 
 		void delayedUpdate();
+		
+		int getPlayerScore();
+
+		TimeComplexity getTimeComplexity();
+		LinkedListOperations getLastOperation();
 	};
 }
