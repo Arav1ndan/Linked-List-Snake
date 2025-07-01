@@ -32,10 +32,20 @@ namespace LinkedList {
 		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void render();
 
-		
+		void insertNodeAtHead();
+		void insertNodeAtTail();
+		void insertNodeAtIndex(int index);
+		void insertNodeAtMiddle();
 
+		void removeAllNodes();
+		void removeNodeAtHead();
+		void removeNodeAtIndex(int index);
+		void removeNodeAt(int index);
+		void removeNodeAtMiddle();
+		//void removeNodeAtTail();
+		//void removeHalfNode();
 		
-		
+		void shiftNodesAfterRemoval(Node* cur_node);
 
 		Node* getHeadNode();
 
@@ -50,12 +60,9 @@ namespace LinkedList {
 		int findMiddleNode();
 
 		void createHeadNode();
-		void insertNodeAtHead();
-		void insertNodeAtTail();
-		void insertNodeAtIndex(int index);
-		void insertNodeAtMiddle();
-		void removeNodeAtHead();
-		void removeAllNodes();
+		
+		
+		
 
 	};
 }
