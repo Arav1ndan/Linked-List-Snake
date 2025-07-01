@@ -29,10 +29,6 @@ namespace Player {
 		
 		initializeBodyPartImage();
 	}
-	void BodyPart::update()
-	{
-
-	}
 	void BodyPart::render()
 	{
 		bodypart_image->render();
@@ -58,12 +54,7 @@ namespace Player {
 		return sf::Vector2f(x_screen_position, y_screen_position);
 	}
 
-	void BodyPart::setDirection(Direction direction)
-	{
-		previous_direction = this->direction;
 
-		this->direction = direction;
-	}
 
 	Direction BodyPart::getDirection()
 	{
@@ -73,6 +64,14 @@ namespace Player {
 	{
 		return previous_direction;
 	}
+
+	void BodyPart::setDirection(Direction direction)
+	{
+		previous_direction = this->direction;
+
+		this->direction = direction;
+	}
+
 	void BodyPart::setPosition(sf::Vector2i position)
 	{
 		grid_position = position;

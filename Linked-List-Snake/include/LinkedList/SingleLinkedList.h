@@ -47,8 +47,9 @@ namespace LinkedList {
 
 
 		Direction reverse();
-		void reverserNodeDirection();
 		Direction getReverseDirection(Direction reference_direction);
+		void reverserNodeDirection();
+		
 
 		Node* findNodeAtIndex(int index);
 		
