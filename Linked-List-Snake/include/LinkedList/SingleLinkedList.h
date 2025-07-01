@@ -42,8 +42,10 @@ namespace LinkedList {
 		void removeNodeAtIndex(int index);
 		void removeNodeAt(int index);
 		void removeNodeAtMiddle();
-		//void removeNodeAtTail();
-		//void removeHalfNode();
+		void removeNodeAtTail();
+		void removeHalfNode();
+
+		Node* findNodeAtIndex(int index);
 		
 		void shiftNodesAfterRemoval(Node* cur_node);
 

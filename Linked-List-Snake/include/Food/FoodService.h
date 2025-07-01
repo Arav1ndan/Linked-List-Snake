@@ -2,6 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <random>
 #include <vector>
+#include "../../include/LinkedList/Node.h"
 
 namespace Food
 {
