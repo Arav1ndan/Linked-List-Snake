@@ -181,6 +181,27 @@ namespace LinkedList {
 		int middle_index = findMiddleNode();
 		removeNodeAt(middle_index);
 	}
+
+	void SingleLinkedList::removeNodeAtTail()
+	{
+		if (head_node == nullptr)return;
+		linked_list_size--;
+
+		Node* cur_node = head_node;
+
+		if (cur_node->next == nullptr)
+		{
+			removeNodeAtHead();
+			return;
+		}
+
+		while (cur_node->next->next != nullptr)
+		{
+			cur_node = cur_node->next;
+		}
+		delete(cur_node->next);
+		cur_node->next = nullptr;
+	}
 	
 	std::vector<sf::Vector2i> SingleLinkedList::getNodesPositionList()
 	{
