@@ -224,6 +224,38 @@ namespace LinkedList {
 		prev_node->next = nullptr;
 	}
 
+	Direction SingleLinkedList::reverse()
+	{
+		Node* cur_node = head_node;
+		Node* prev_node = nullptr;
+		Node* next_node = nullptr;
+
+		while (cur_node != nullptr)
+		{
+			next_node = cur_node->next;
+			cur_node->next = prev_node;
+
+			prev_node = cur_node;
+			cur_node = next_node;
+		}
+
+		head_node = prev_node;
+
+		reverserNodeDirection();
+		return head_node->body_part.getDirection();       
+	}
+
+	void SingleLinkedList::reverserNodeDirection()
+	{
+		Node* curr_node = head_node;
+
+		while (curr_node != nullptr)
+		{
+			curr_node->body_part.setDirection(getReverseDirection(curr_node->body_part.getPrevDirection()));
+			curr_node = curr_node->next;
+		}
+	}
+
 	Node* SingleLinkedList::findNodeAtIndex(int index)
 	{
 		int cur_index = 0;

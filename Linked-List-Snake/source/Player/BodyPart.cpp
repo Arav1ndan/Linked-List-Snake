@@ -69,6 +69,10 @@ namespace Player {
 	{
 		return direction;
 	}
+	Direction BodyPart::getPrevDirection()
+	{
+		return previous_direction;
+	}
 	void BodyPart::setPosition(sf::Vector2i position)
 	{
 		grid_position = position;
