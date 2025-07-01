@@ -45,6 +45,11 @@ namespace LinkedList {
 		void removeNodeAtTail();
 		void removeHalfNode();
 
+
+		Direction reverse();
+		void reverserNodeDirection();
+		Direction getReverseDirection(Direction reference_direction);
+
 		Node* findNodeAtIndex(int index);
 		
 		void shiftNodesAfterRemoval(Node* cur_node);
@@ -63,8 +68,5 @@ namespace LinkedList {
 
 		void createHeadNode();
 		
-		
-		
-
 	};
 }

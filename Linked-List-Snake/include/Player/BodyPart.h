@@ -39,6 +39,7 @@ namespace Player {
 
 		void setDirection(Direction direction);
 		Direction getDirection();
+		Direction getPrevDirection();
 
 		void createBodyPartImage();
 		void initializeBodyPartImage();
