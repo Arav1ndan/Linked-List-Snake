@@ -11,11 +11,14 @@ namespace Player {
 
 		sf::Vector2i grid_position;
 		Direction direction;
+		Direction previous_direction;
 
 		float bodypart_width;
 		float bodypart_height;
 
-		Direction previous_direction;
+		void createBodyPartImage();
+		void initializeBodyPartImage();
+		sf::Vector2f getBodyPartScreenPosition();
 
 		float getRotationAngle();
 		
@@ -27,24 +30,20 @@ namespace Player {
 		sf::Vector2i getNextPositionDown();
 		//void setPosition(sf::Vector2i position);
 
+
+		void destroy();
 	public:
 		BodyPart();
 		~BodyPart();
 
 		void initialize(float width, float height, sf::Vector2i pos, Direction dir);
-		void update();
 		void render();
-		void destroy();
-
-
+		
 		void setDirection(Direction direction);
 		Direction getDirection();
 		Direction getPrevDirection();
-
-		void createBodyPartImage();
-		void initializeBodyPartImage();
-		sf::Vector2f getBodyPartScreenPosition();
 		
+
 		void setPosition(sf::Vector2i position);
 		sf::Vector2i getPosition();		
 		sf::Vector2i getNextPosition();

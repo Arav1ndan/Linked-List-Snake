@@ -245,6 +245,21 @@ namespace LinkedList {
 		return head_node->body_part.getDirection();       
 	}
 
+	Direction SingleLinkedList::getReverseDirection(Direction reference_direction)
+	{
+		switch (reference_direction)
+		{	
+		case Player::Direction::UP:
+				return Direction::DOWN;
+		case Player::Direction::DOWN:
+				return Direction::UP;
+		case Player::Direction::LEFT:
+			return Direction::RIGHT;
+		case Player::Direction::RIGHT:
+			return Direction::LEFT;
+		}
+	}
+
 	void SingleLinkedList::reverserNodeDirection()
 	{
 		Node* curr_node = head_node;
