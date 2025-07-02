@@ -1,4 +1,5 @@
 #include "LinkedListLib/SingleLinked/SingleLinkedList.h"
+#include "LinkedListLib/SingleLinked/SingleNode.h"
 #include "Player/BodyPart.h"
 #include "Level/LevelView.h"
 #include <iostream>
@@ -14,46 +15,60 @@ namespace LinkedListLib {
 
 		SingleLinkedList::~SingleLinkedList() = default;
 
-		void SingleLinkedList::initialize(float width, float height, sf::Vector2i position, Player::Direction direction)
-		{
-			node_width = width;
-			node_height = height;
-			default_position = position;
-			default_direction = direction;
-
-			linked_list_size = 0;
-
-		}
-		void SingleLinkedList::initializeNode(Node* new_node, Node* reference_node, Operation operation)
-		{
-			if (reference_node == nullptr)
-			{
-				new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
-				return;
-			}
-			sf::Vector2i position = getNewNodePosition(reference_node, operation);
-
-			new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
-		}
-		void SingleLinkedList::render()
-		{
-			Node* cur_node = head_node;
-
-			while (cur_node != nullptr)
-			{
-				cur_node->body_part.render();
-				cur_node = cur_node->next;
-			}
-
-		}
-
-
-
 		Node* SingleLinkedList::createNode()
 		{
 			return new Node();
 		}
 
+		void SingleLinkedList::insertNodeAtHead()
+		{
+			linked_list_size++;
+			Node* new_node = createNode();
+
+			if (head_node == nullptr)
+			{
+				head_node = new_node;
+				initializeNode(new_node, nullptr, Operation::HEAD);
+				return;
+			}
+
+			initializeNode(new_node, head_node, Operation::HEAD);
+			new_node->next = head_node;
+			head_node = new_node;
+		}
+		void SingleLinkedList::insertNodeAtTail()
+		{
+			linked_list_size++;
+			Node* new_node = createNode();
+
+			Node* cur_node = head_node;
+
+			if (cur_node == nullptr)
+			{
+				head_node = new_node;
+				initializeNode(new_node, nullptr, Operation::TAIL);
+				return;
+			}
+
+			while (cur_node->next != nullptr)
+			{
+				cur_node = cur_node->next;
+			}
+
+			cur_node->next = new_node;
+
+			initializeNode(new_node, cur_node, Operation::TAIL);
+		}
+		void SingleLinkedList::insertNodeAtMiddle()
+		{
+			if (head_node == nullptr)
+			{
+				insertNodeAtHead();
+				return;
+			}
+			int middle_index = findMiddleNode();
+			insertNodeAtIndex(middle_index);
+		}
 		sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
 		{
 			switch (operation)
@@ -86,22 +101,7 @@ namespace LinkedListLib {
 			return false;
 		}
 
-		void SingleLinkedList::insertNodeAtHead()
-		{
-			linked_list_size++;
-			Node* new_node = createNode();
-
-			if (head_node == nullptr)
-			{
-				head_node = new_node;
-				initializeNode(new_node, nullptr, Operation::HEAD);
-				return;
-			}
-
-			initializeNode(new_node, head_node, Operation::HEAD);
-			new_node->next = head_node;
-			head_node = new_node;
-		}
+		
 		void SingleLinkedList::removeAllNodes()
 		{
 			if (head_node == nullptr)return;
@@ -222,7 +222,7 @@ namespace LinkedListLib {
 
 			head_node = prev_node;
 
-			reverserNodeDirection();
+			reverseNodeDirections();
 			return head_node->body_part.getDirection();
 		}
 
@@ -241,7 +241,7 @@ namespace LinkedListLib {
 			}
 		}
 
-		void SingleLinkedList::reverserNodeDirection()
+		void SingleLinkedList::reverseNodeDirections()
 		{
 			Node* curr_node = head_node;
 
@@ -304,26 +304,7 @@ namespace LinkedListLib {
 				cur_node = cur_node->next;
 			}
 		}
-		void SingleLinkedList::insertNodeAtTail()
-		{
-			linked_list_size++;
-			Node* new_node = createNode();
-			Node* cur_node = head_node;
-
-			if (cur_node == nullptr)
-			{
-				head_node = new_node;
-				initializeNode(new_node, nullptr, Operation::TAIL);
-				return;
-			}
-
-			while (cur_node->next != nullptr)
-			{
-				cur_node = cur_node->next;
-			}
-			cur_node->next = new_node;
-			initializeNode(new_node, cur_node, Operation::TAIL);
-		}
+		
 		void SingleLinkedList::insertNodeAtIndex(int index)
 		{
 			if (index < 0 || index >= linked_list_size) return;
@@ -368,16 +349,7 @@ namespace LinkedListLib {
 			}
 			return middleindex;
 		}*/
-		void SingleLinkedList::insertNodeAtMiddle()
-		{
-			if (head_node == nullptr)
-			{
-				insertNodeAtHead();
-				return;
-			}
-			int middle_index = findMiddleNode();
-			insertNodeAtIndex(middle_index);
-		}
+		
 		void SingleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
 		{
 			sf::Vector2i prev_position = cur_node->body_part.getPosition();
