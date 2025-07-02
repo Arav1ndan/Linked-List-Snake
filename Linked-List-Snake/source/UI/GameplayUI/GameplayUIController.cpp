@@ -47,6 +47,8 @@ namespace UI
         {
             initializeLevelNumberText();
             initializeScoreText();
+            initializeTimeComplexityText();
+            initializeOperationText();
         }
 
         void GameplayUIController::initializeLevelNumberText()
@@ -148,24 +150,32 @@ namespace UI
         {
             updateLevelNumberText();
             updateScoreText();
+            updateTimeComplexityText();
+            updateOperationText();
         }
 
         void GameplayUIController::render()
         {
             level_number_text->render();
             score_text->render();
+            time_complexity_text->render();
+            operation_text->render();
         }
 
         void GameplayUIController::show()
         {
             level_number_text->show();
             score_text->show();
+            time_complexity_text->show();
+            operation_text->show();
         }
 
         void GameplayUIController::destroy()
         {
             delete (level_number_text);
             delete (score_text);
+            delete (time_complexity_text);
+            delete (operation_text);
         }
     }
 }

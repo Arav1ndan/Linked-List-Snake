@@ -52,35 +52,14 @@ namespace LinkedList {
 		return new Node();
 	}
 
-	//void SingleLinkedList::createHeadNode()
-	//{
-	//	head_node = createNode();
-	//	head_node->body_part.initialize(node_width, node_height, default_position, default_direction);
-	//	return;
-	//}
-	//Node* SingleLinkedList::createNode()
-	//{
-	//	return new Node();
-	//}
-	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node)
+	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
 	{
-		Direction reference_direction = reference_node->body_part.getDirection();
-		sf::Vector2i referece_position = reference_node->body_part.getPosition();
-
-		switch (reference_direction)
+		switch (operation)
 		{
-		case Player::Direction::UP:
-			return sf::Vector2i(referece_position.x, referece_position.y - 1);
-			break;
-		case Player::Direction::DOWN:
-			return sf::Vector2i(referece_position.x, referece_position.y + 1);
-			break;
-		case Player::Direction::LEFT:
-			return sf::Vector2i(referece_position.x + 1, referece_position.y);
-			break;
-		case Player::Direction::RIGHT:
-			return sf::Vector2i(referece_position.x - 1, referece_position.y);
-			break;
+		case LinkedList::Operation::HEAD:
+			return reference_node->body_part.getNextPosition();
+		case LinkedList::Operation::TAIL:
+			return reference_node->body_part.getPrevPosition();
 		}
 		return default_position;
 		
@@ -300,20 +279,7 @@ namespace LinkedList {
 		}
 
 		return nodes_position_list;
-	}
-
-	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
-	{
-		switch (operation)
-		{
-		case LinkedList::Operation::HEAD:
-			return reference_node->body_part.getNextPosition();
-		case LinkedList::Operation::TAIL:
-			return reference_node->body_part.getPrevPosition();
-		}
-		return default_position;
-	}
-	
+	}	
 	void SingleLinkedList::updateNodeDirection(Direction direction_to_set)
 	{
 		Node* cur_node = head_node;
