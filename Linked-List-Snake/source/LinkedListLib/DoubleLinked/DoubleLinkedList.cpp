@@ -170,6 +170,14 @@ namespace LinkedListLib
 			delete(cur_node);
 			linked_list_size--;
 		}
+		void DoubleLinkedList::removeAllNodes()
+		{
+			if (head_node == nullptr)return;
+			while (head_node != nullptr)
+			{
+				removeNodeAtHead();
+			}
+		}
 		void DoubleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
 		{
 			sf::Vector2i prev_position = cur_node->body_part.getPosition();
