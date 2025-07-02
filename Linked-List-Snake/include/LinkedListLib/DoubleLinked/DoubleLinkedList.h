@@ -4,7 +4,7 @@
 
 namespace LinkedListLib
 {
-	namespace DDoubleLinked
+	namespace DoubleLinked
 	{
 		class DoubleLinkedList : public LinkedList
 		{

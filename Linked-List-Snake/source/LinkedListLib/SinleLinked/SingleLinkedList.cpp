@@ -5,7 +5,7 @@
 
 namespace LinkedListLib {
 
-	namespace SingeLinked
+	namespace SingleLinked
 	{
 		SingleLinkedList::SingleLinkedList()
 		{
