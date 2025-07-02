@@ -33,7 +33,19 @@ namespace LinkedListLib
 
 			head_node = new_node;
 		}
+		void DoubleLinkedList::insertNodeAtMiddle()
+		{
+			if (head_node == nullptr)
+			{
+				insertNodeAtHead();
+				return;
+			}
+			int middleIndex = findMiddleNode();
 
+			Node* new_node = createNode();
+
+			insertNodeAtIndex(middleIndex, new_node);
+		}
 		void DoubleLinkedList::insertNodeAtTail()
 		{
 			linked_list_size++;
@@ -54,7 +66,51 @@ namespace LinkedListLib
 			}
 			cur_node->next = new_node;
 			static_cast<DoubleNode*>(new_node)->previous = cur_node;
-			initializeNode(new_node, cur_node, Operation::TAIL);
+			initializeNode(new_node,cur_node,Operation::TAIL);
+		}
+		void DoubleLinkedList::insertNodeAtIndex(int index, Node* new_node)
+		{
+			if (index < 0 || index >= linked_list_size) return;
+			
+			if (index == 0)
+			{
+				insertNodeAtHead();
+				return;
+			}
+
+			int cur_index = 0;
+			Node* cur_node = head_node;
+			Node* prev_node = nullptr;
+
+			while (cur_node != nullptr && cur_index < index)
+			{
+				prev_node = cur_node;
+				cur_node = cur_node->next;
+				cur_index++;
+			}
+			prev_node->next = new_node;
+
+			new_node->next = cur_node;
+			initializeNode(new_node, prev_node, Operation::TAIL);
+			shiftNodesAfterInsertion(new_node, cur_node, prev_node);
+			linked_list_size++;
+		}
+		void DoubleLinkedList::shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node)
+		{
+			Node* next_node = cur_node;
+			cur_node = new_node;
+
+			while (cur_node != nullptr && next_node != nullptr)
+			{
+				cur_node->body_part.setPosition(next_node->body_part.getPosition());
+				cur_node->body_part.setDirection(next_node->body_part.getDirection());
+
+				prev_node = cur_node;
+				cur_node = next_node;
+				next_node = next_node->next;
+			}
+
+			initializeNode(cur_node, new_node, Operation::TAIL);
 		}
 	}
 }
