@@ -88,9 +88,8 @@ namespace LinkedListLib
 				cur_node = cur_node->next;
 				cur_index++;
 			}
-			prev_node->next = new_node;
-
-			new_node->next = cur_node;
+			cur_node->next = new_node;
+			static_cast<DoubleNode*>(new_node)->previous = prev_node;
 			initializeNode(new_node, prev_node, Operation::TAIL);
 			shiftNodesAfterInsertion(new_node, cur_node, prev_node);
 			linked_list_size++;
@@ -111,6 +110,17 @@ namespace LinkedListLib
 			}
 
 			initializeNode(cur_node, new_node, Operation::TAIL);
+		}
+
+		void DoubleLinkedList::removeNodeAtHead()
+		{
+			linked_list_size--;
+
+			Node* cur_node = head_node;
+			head_node = head_node->next;
+
+			cur_node->next = nullptr;
+			delete cur_node;
 		}
 	}
 }
