@@ -35,7 +35,7 @@ namespace Player {
 
 	int PlayerService::getPlayerScore()
 	{
-		snake_controller->getPlayerScore();
+		return snake_controller->getPlayerScore();
 	}
 
 	std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList()

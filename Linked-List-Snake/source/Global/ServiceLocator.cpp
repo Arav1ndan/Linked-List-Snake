@@ -22,9 +22,10 @@ namespace Global
 		ui_service = nullptr;
 		time_service = nullptr;
 		level_service = nullptr;
+		player_service = nullptr;
 		element_service = nullptr;
 		food_service = nullptr;
-		player_service = nullptr;
+		
 		
 		createServices();
 	}
@@ -52,9 +53,9 @@ namespace Global
 		ui_service->initialize();
 		time_service->initialize();
 		level_service->initialize();
-		element_service->initialize();
-		food_service->initialize();
 		player_service->initialize();
+		element_service->initialize();	
+		food_service->initialize();
 		
 	}
 
@@ -62,9 +63,7 @@ namespace Global
 	{
 		graphic_service->update();
 		event_service->update();
-		
 		time_service->update();
-		// level serive.		
 		
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
@@ -78,7 +77,7 @@ namespace Global
 
 	void ServiceLocator::render()
 	{
-		ui_service->render();
+		
 		graphic_service->render();
 		
 		if (GameService::getGameState() == GameState::GAMEPLAY)
@@ -88,7 +87,7 @@ namespace Global
 			food_service->render();
 			player_service->render();
 		}
-		
+		ui_service->render();
 	}
 
 	void ServiceLocator::clearAllServices()

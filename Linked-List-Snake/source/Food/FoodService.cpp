@@ -140,6 +140,7 @@ namespace Food
 	void FoodService::destroyFood()
 	{
 		if (current_food_item) delete(current_food_item);
+		current_food_item = nullptr;
 	}
 
 	void FoodService::updateElapsedDuration()
