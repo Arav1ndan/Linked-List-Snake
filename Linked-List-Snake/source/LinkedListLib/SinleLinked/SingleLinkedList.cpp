@@ -1,9 +1,9 @@
-#include "LinkedList/SingleLinkedList.h"
+#include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 #include "Player/BodyPart.h"
 #include "Level/LevelView.h"
 #include <iostream>
 
-namespace LinkedList {
+namespace LinkedListLib {
 	
 	SingleLinkedList::SingleLinkedList()
 	{
