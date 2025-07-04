@@ -37,8 +37,8 @@ namespace Player {
 	class SnakeController {
 	private:
 
-		LinkedList::SingleLinkedList* single_linked_list;
-		void createLinkedList();
+		LinkedListLib::LinkedList* linked_list;
+		
 
 		const int initial_snake_length = 10;
 
@@ -76,10 +76,16 @@ namespace Player {
 
 
 		int player_score = 0;
+
 	public:
 		SnakeController();
 		~SnakeController();
 
+
+		void createLinkedList(LinkedListType level_type);
+
+
+		void initializeLinkedList();
 		void initialize();
 		void update();
 		void render();

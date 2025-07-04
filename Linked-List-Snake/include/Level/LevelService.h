@@ -9,6 +9,8 @@ namespace Level {
         LevelController* level_controller;
         LevelNumber current_level;
 
+
+        LinkedListType current_linked_list_type;
         void createLevelController();
         void destroy();
 
@@ -26,12 +28,13 @@ namespace Level {
 
         void spawnFood();
 
-        void createLevel(LevelNumber level_to_load); 
+        void createLevel(LinkedListType linked_list_type);
 
         void spawnLevelElements(LevelNumber level_to_load);
 
         LevelNumber getCurrentLevel();
 
         void setCurrentLevelNumber(LevelNumber level_to_load);
+
 	};
 }

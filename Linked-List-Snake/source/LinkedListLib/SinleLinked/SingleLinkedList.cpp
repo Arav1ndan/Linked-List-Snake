@@ -67,7 +67,9 @@ namespace LinkedListLib {
 				return;
 			}
 			int middle_index = findMiddleNode();
-			insertNodeAtIndex(middle_index);
+
+			Node* new_node = createNode();
+			insertNodeAtIndex(middle_index, new_node);
 		}
 		void SingleLinkedList::insertNodeAtIndex(int index, Node* new_node)
 		{
@@ -90,7 +92,7 @@ namespace LinkedListLib {
 
 			initializeNode(cur_node, prev_node, Operation::TAIL);
 		}
-		sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
+	/*	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
 		{
 			switch (operation)
 			{
@@ -120,7 +122,7 @@ namespace LinkedListLib {
 			}
 
 			return false;
-		}
+		}*/
 
 		
 		void SingleLinkedList::removeAllNodes()
@@ -247,7 +249,7 @@ namespace LinkedListLib {
 			return head_node->body_part.getDirection();
 		}
 
-		Direction SingleLinkedList::getReverseDirection(Direction reference_direction)
+		/*Direction SingleLinkedList::getReverseDirection(Direction reference_direction)
 		{
 			switch (reference_direction)
 			{
@@ -260,9 +262,9 @@ namespace LinkedListLib {
 			case Player::Direction::RIGHT:
 				return Direction::LEFT;
 			}
-		}
+		}*/
 
-		void SingleLinkedList::reverseNodeDirections()
+		/*void SingleLinkedList::reverseNodeDirections()
 		{
 			Node* curr_node = head_node;
 
@@ -354,7 +356,7 @@ namespace LinkedListLib {
 			shiftNodesAfterInsertion(new_node, cur_node, prev_node);
 
 
-		}
+		}*/
 		/*int SingleLinkedList::findMiddleNode()
 		{
 			Node* fast_node = head_node;
@@ -391,10 +393,10 @@ namespace LinkedListLib {
 				prev_direction = temp_direction;
 			}
 		}
-		Node* SingleLinkedList::getHeadNode()
+		/*Node* SingleLinkedList::getHeadNode()
 		{
 			return  head_node;
-		}
+		}*/
 		
 	}
 }
